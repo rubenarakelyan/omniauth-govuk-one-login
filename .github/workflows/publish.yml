@@ -4,7 +4,7 @@ on:
     types: [published]
 jobs:
   publish:
-    name: Publish to Rubygems
+    name: Publish to RubyGems
     runs-on: ubuntu-latest
     environment: publish
     permissions:
