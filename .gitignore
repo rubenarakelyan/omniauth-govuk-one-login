@@ -1,0 +1,3 @@
+coverage/*
+tmp/rspec-examples.txt
+Gemfile.lock

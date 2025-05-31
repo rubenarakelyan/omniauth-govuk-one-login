@@ -1,0 +1,26 @@
+name: Publish
+on:
+  release:
+    types: [published]
+jobs:
+  publish:
+    name: Publish to Rubygems
+    runs-on: ubuntu-latest
+    environment: publish
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Configure private key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$PRIVATE_KEY" > ~/.ssh/gem-private_key.pem
+          chmod 600 ~/.ssh/gem-private_key.pem
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Publish to RubyGems
+        uses: rubygems/release-gem@v1
