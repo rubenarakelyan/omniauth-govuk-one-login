@@ -1,5 +1,7 @@
 # GOV.UK One Login OmniAuth strategy
 
+[![Gem Version](https://badge.fury.io/rb/omniauth_govuk_one_login.svg?icon=si%3Arubygems)](https://badge.fury.io/rb/omniauth_govuk_one_login)
+
 This gem is an OmniAuth strategy to provide authentication with GOV.UK One Login using the OpenID Connect protocol.
 
 Heavily inspired by [omniauth_login_dot_gov](https://github.com/18F/omniauth_login_dot_gov).
