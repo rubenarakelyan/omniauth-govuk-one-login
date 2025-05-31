@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 3.2.8"
   s.platform = Gem::Platform::RUBY
   s.files = Dir.glob("lib/**/*") + [
+    "CHANGELOG.md",
     "Gemfile",
     "LICENSE",
     "README.md",
