@@ -59,7 +59,7 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
       scope: "openid,email", # comma-separated; must include at least `openid` and `email`
       ui_locales: "en", # comma-separated; can also include `cy` for Welsh UI
       vtr: ["Cl.Cm"], # array with one element; dot-separated; can also include identity vectors such as `P2` (eg. `Cl.Cm.P2`)
-      pkce: false, # set to `true` to enable "Proof Key for Code Exchange)
+      pkce: false, # set to `true` to enable "Proof Key for Code Exchange"
       userinfo_claims: [] # array of URLs; see https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#create-a-url-encoded-json-object-for-lt-claims-request-gt
     }
 
