@@ -21,6 +21,14 @@ Gem::Specification.new do |s|
     "omniauth_govuk_one_login.gemspec"
   ]
   s.require_paths = ["lib"]
+  s.metadata = {
+    "bug_tracker_uri"   => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/issues",
+    "changelog_uri"     => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/blob/main/CHANGELOG.md",
+    "documentation_uri" => "https://www.rubydoc.info/gems/omniauth_govuk_one_login",
+    "source_code_uri"   => "https://github.com/rubenarakelyan/omniauth-govuk-one-login",
+    "wiki_uri"          => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/wiki",
+    "funding_uri"       => "https://github.com/sponsors/rubenarakelyan"
+  }
 
   s.cert_chain = ["certs/rubena.pem"]
   s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
