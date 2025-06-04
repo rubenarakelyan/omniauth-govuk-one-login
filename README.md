@@ -56,9 +56,10 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
       private_key: OpenSSL::PKey::RSA.new(ENV["GOVUK_ONE_LOGIN_PRIVATE_KEY"]), # the private key you generated above in PEM format
       redirect_uri: ENV["GOVUK_ONE_LOGIN_REDIRECT_URI"],
       # these are optional - shown here with their default values if omitted
-      scope: "openid,email", # comma-separated; must include at least `openid`
+      scope: "openid,email", # comma-separated; must include at least `openid` and `email`
       ui_locales: "en", # comma-separated; can also include `cy` for Welsh UI
       vtr: ["Cl.Cm"], # array with one element; dot-separated; can also include identity vectors such as `P2` (eg. `Cl.Cm.P2`)
+      pkce: false, # set to `true` to enable "Proof Key for Code Exchange)
       userinfo_claims: [] # array of URLs; see https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#create-a-url-encoded-json-object-for-lt-claims-request-gt
     }
 
