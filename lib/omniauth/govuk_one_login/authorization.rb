@@ -42,6 +42,12 @@ module OmniAuth
             userinfo: userinfo_claims
           }
         }
+        if client.pkce
+          payload.merge!({
+            code_challenge: code_challenge,
+            code_challenge_method: "S256"
+          })
+        end
         JWT.encode(payload, client.private_key, "RS256")
       end
 
@@ -57,11 +63,29 @@ module OmniAuth
 
       def nonce
         @nonce ||= begin
-          state_value = SecureRandom.urlsafe_base64(24)
-          state_digest = OpenSSL::Digest::SHA256.base64digest(state_value)
+          nonce_value = SecureRandom.urlsafe_base64(24)
+          nonce_digest = OpenSSL::Digest::SHA256.base64digest(nonce_value)
           session[:oidc] ||= {}
-          session[:oidc][:nonce_digest] = state_digest
-          state_value
+          session[:oidc][:nonce_digest] = nonce_digest
+          nonce_value
+        end
+      end
+
+      def code_verifier
+        @code_verifier ||= begin
+          code_verifier_value = SecureRandom.urlsafe_base64(36)
+          session[:oidc] ||= {}
+          session[:oidc][:code_verifier_value] = code_verifier_value
+          code_verifier_value
+        end
+      end
+
+      def code_challenge
+        @code_challenge ||= begin
+          code_challenge_digest = Base64.urlsafe_encode64(OpenSSL::Digest::SHA256.digest(code_verifier), padding: false)
+          session[:oidc] ||= {}
+          session[:oidc][:code_challenge_digest] = code_challenge_digest
+          code_challenge_digest
         end
       end
     end

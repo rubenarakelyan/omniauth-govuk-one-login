@@ -2,6 +2,7 @@ describe OmniAuth::GovukOneLogin::IdTokenRequest do
   include TokenWebmock
 
   let(:client) { MockClient.new }
+  let(:session) { { oidc: { code_verifier: SecureRandom.urlsafe_base64(43) } } }
   let(:code) { "authorization-code-1234" }
 
   # Response values
@@ -18,7 +19,7 @@ describe OmniAuth::GovukOneLogin::IdTokenRequest do
     }.to_json
   end
 
-  subject { described_class.new(code: code, client: client) }
+  subject { described_class.new(code: code, session: session, client: client) }
 
   describe "#request_id_token" do
     context "when the request is successful" do

@@ -2,7 +2,7 @@ module OmniAuth
   module GovukOneLogin
     class Client
       attr_reader :client_id, :idp_configuration, :private_key,
-                  :redirect_uri, :scope, :ui_locales, :vtr,
+                  :redirect_uri, :scope, :ui_locales, :vtr, :pkce,
                   :userinfo_claims
 
       def initialize(
@@ -13,6 +13,7 @@ module OmniAuth
         scope:,
         ui_locales:,
         vtr:,
+        pkce:,
         userinfo_claims:
       )
         @client_id = client_id
@@ -22,6 +23,7 @@ module OmniAuth
         @scope = scope
         @ui_locales = ui_locales
         @vtr = vtr
+        @pkce = pkce
         @userinfo_claims = userinfo_claims
       end
     end

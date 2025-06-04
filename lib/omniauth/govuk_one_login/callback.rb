@@ -13,6 +13,7 @@ module OmniAuth
         handle_error(params) if params["error"]
         @id_token = IdTokenRequest.new(
           code: params["code"],
+          session: session,
           client: client
         ).request_id_token
         id_token.verify(nonce: get_oidc_value_from_session(:nonce_digest))

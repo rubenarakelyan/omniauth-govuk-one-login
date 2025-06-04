@@ -30,7 +30,8 @@ describe OmniAuth::GovukOneLogin::Authorization do
         "ui_locales" => "en",
         "claims" => {
           "userinfo" => {}
-        }
+        },
+        "code_challenge_method" => "S256"
       )
 
       expect(decoded_request["nonce"]).to_not be_blank
@@ -41,6 +42,11 @@ describe OmniAuth::GovukOneLogin::Authorization do
       expect(decoded_request["state"]).to_not be_blank
       state_digest = OpenSSL::Digest::SHA256.base64digest(decoded_request["state"])
       expect(state_digest).to eq(session[:oidc][:state_digest])
+
+      expect(decoded_request["code_challenge"]).to_not be_blank
+      expect(decoded_request["code_challenge"].length).to eq(43)
+      code_challenge_digest = Base64.urlsafe_encode64(OpenSSL::Digest::SHA256.digest(session[:oidc][:code_verifier_value]), padding: false)
+      expect(code_challenge_digest).to eq(session[:oidc][:code_challenge_digest])
     end
   end
 end

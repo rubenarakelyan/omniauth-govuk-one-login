@@ -13,6 +13,7 @@ describe OmniAuth::GovukOneLogin::Client do
       scope: "openid,email",
       ui_locales: "en",
       vtr: ["Cl.Cm"],
+      pkce: true,
       userinfo_claims: []
     )
 
@@ -23,6 +24,7 @@ describe OmniAuth::GovukOneLogin::Client do
     expect(subject.scope).to eq("openid,email")
     expect(subject.ui_locales).to eq("en")
     expect(subject.vtr).to eq(["Cl.Cm"])
+    expect(subject.pkce).to eq(true)
     expect(subject.userinfo_claims).to eq([])
   end
 end

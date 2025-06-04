@@ -1,3 +1,4 @@
+require "base64"
 require "faraday"
 require "jwt"
 require "openssl"

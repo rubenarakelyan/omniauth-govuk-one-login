@@ -10,6 +10,7 @@ module OmniAuth
       option :scope, "openid,email"
       option :ui_locales, "en"
       option :vtr, ["Cl.Cm"]
+      option :pkce, false
       option :userinfo_claims, []
 
       attr_reader :authorization, :callback
@@ -29,8 +30,8 @@ module OmniAuth
 
       def request_phase
         @authorization = OmniAuth::GovukOneLogin::Authorization.new(
-          client: client,
-          session: session
+          session: session,
+          client: client
         )
         redirect authorization.redirect_url
       end
@@ -55,6 +56,7 @@ module OmniAuth
           scope: options.scope,
           ui_locales: options.ui_locales,
           vtr: options.vtr,
+          pkce: options.pkce,
           userinfo_claims: options.userinfo_claims
         )
       end

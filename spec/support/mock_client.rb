@@ -1,6 +1,6 @@
 class MockClient
   attr_reader :client_id, :idp_configuration, :private_key,
-              :redirect_uri, :scope, :ui_locales, :vtr,
+              :redirect_uri, :scope, :ui_locales, :vtr, :pkce,
               :userinfo_claims
 
   def initialize(overrides = {})
@@ -11,6 +11,7 @@ class MockClient
     @scope = "openid,email"
     @ui_locales = "en"
     @vtr = ["Cl.Cm"]
+    @pkce = true
     @userinfo_claims = []
 
     overrides.each do |key, value|

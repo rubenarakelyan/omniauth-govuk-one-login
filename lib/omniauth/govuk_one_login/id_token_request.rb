@@ -1,10 +1,11 @@
 module OmniAuth
   module GovukOneLogin
     class IdTokenRequest
-      attr_reader :code, :client
+      attr_reader :code, :session, :client
 
-      def initialize(code:, client:)
+      def initialize(code:, session:, client:)
         @code = code
+        @session = session
         @client = client
       end
 
@@ -14,6 +15,7 @@ module OmniAuth
           client_assertion: client_assertion_jwt,
           client_assertion_type: "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
           code: code,
+          code_verifier: client.pkce ? get_oidc_value_from_session(:code_verifier_value) : nil,
           grant_type: "authorization_code",
           redirect_uri: client.redirect_uri
         )
@@ -51,6 +53,12 @@ module OmniAuth
         status_code = response.status
         error_message = "ID token request failed with status code: #{status_code}"
         raise IdTokenRequestError, error_message
+      end
+
+      def get_oidc_value_from_session(key)
+        oidc_session = session[:oidc].symbolize_keys
+        return if oidc_session.nil?
+        oidc_session[key]
       end
     end
   end
