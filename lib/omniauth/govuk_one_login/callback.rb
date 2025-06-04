@@ -56,6 +56,7 @@ module OmniAuth
       def get_oidc_value_from_session(key)
         oidc_session = session[:oidc].symbolize_keys
         return if oidc_session.nil?
+
         oidc_session[key]
       end
     end

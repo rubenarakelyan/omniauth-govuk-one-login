@@ -1,5 +1,5 @@
 module UserinfoWebmock
-  def stub_userinfo_request(body:, status: 200, access_token:)
+  def stub_userinfo_request(body:, access_token:, status: 200)
     stub_request(
       :get,
       IdpFixtures.userinfo_endpoint

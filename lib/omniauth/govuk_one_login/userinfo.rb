@@ -16,7 +16,7 @@ module OmniAuth
       end
 
       def to_h
-        super().merge(name: email || uuid)
+        super.merge(name: email || uuid)
       end
     end
   end

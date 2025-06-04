@@ -1,9 +1,9 @@
 describe OmniAuth::GovukOneLogin::Client do
   it "initializes" do
     idp_configuration = MockIdpConfiguration.new
-    allow(OmniAuth::GovukOneLogin::IdpConfiguration).to receive(:new).
-      with(idp_base_url: IdpFixtures.base_url).
-      and_return(idp_configuration)
+    allow(OmniAuth::GovukOneLogin::IdpConfiguration).to receive(:new)
+      .with(idp_base_url: IdpFixtures.base_url)
+      .and_return(idp_configuration)
 
     subject = described_class.new(
       client_id: ClientFixtures.client_id,

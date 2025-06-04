@@ -1,5 +1,5 @@
 module TokenWebmock
-  def stub_id_token_request(body:, status: 200, code:)
+  def stub_id_token_request(body:, code:, status: 200)
     stub_request(
       :post,
       IdpFixtures.token_endpoint

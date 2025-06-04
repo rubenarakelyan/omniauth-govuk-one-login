@@ -17,7 +17,7 @@ describe OmniAuth::GovukOneLogin::UserinfoRequest do
     {
       sub: uuid,
       email: email,
-      email_verified: email_verified,
+      email_verified: email_verified
     }.to_json
   end
 

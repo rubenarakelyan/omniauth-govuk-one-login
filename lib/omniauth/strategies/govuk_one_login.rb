@@ -43,8 +43,8 @@ module OmniAuth
         )
         callback.call(request.params)
         super
-      rescue OmniAuth::GovukOneLogin::Error => error
-        fail!(error.key, error)
+      rescue OmniAuth::GovukOneLogin::Error => e
+        fail!(e.key, e)
       end
 
       def client

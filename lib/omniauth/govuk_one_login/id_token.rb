@@ -5,7 +5,7 @@ module OmniAuth
       :access_token,
       :id_token,
       :expires_in,
-      :token_type,
+      :token_type
     ) do
       def initialize(
         client:,
@@ -58,6 +58,7 @@ module OmniAuth
           token_nonce_digest,
           session_nonce_digest
         )
+
         raise IdTokenNonceMismatchError
       end
 
@@ -68,6 +69,7 @@ module OmniAuth
           token_vot,
           vot
         )
+
         raise IdTokenVotMismatchError
       end
     end

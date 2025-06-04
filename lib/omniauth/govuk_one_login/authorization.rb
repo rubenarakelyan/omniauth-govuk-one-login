@@ -44,9 +44,9 @@ module OmniAuth
         }
         if client.pkce
           payload.merge!({
-            code_challenge: code_challenge,
-            code_challenge_method: "S256"
-          })
+                           code_challenge: code_challenge,
+                           code_challenge_method: "S256"
+                         })
         end
         JWT.encode(payload, client.private_key, "RS256")
       end

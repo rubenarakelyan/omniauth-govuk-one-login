@@ -24,7 +24,7 @@ describe OmniAuth::GovukOneLogin::Callback do
     {
       oidc: {
         state_digest: state_digest,
-        nonce_digest: nonce_digest,
+        nonce_digest: nonce_digest
       }
     }
   end
@@ -227,23 +227,23 @@ describe OmniAuth::GovukOneLogin::Callback do
       context "when object keys are symbols" do
         let(:local_state_digest) { state_digest }
         let(:local_nonce_digest) { nonce_digest }
-        let(:local_session) {
+        let(:local_session) do
           {
             "oidc" => {
               "state_digest" => local_state_digest,
-              "nonce_digest" => local_nonce_digest,
+              "nonce_digest" => local_nonce_digest
             }
           }.deep_symbolize_keys
-        }
+        end
 
         subject { described_class.new(client: client, session: local_session) }
 
         it "is successfully fetches session values" do
-          expect(subject).to receive(:get_oidc_value_from_session).
-            with(:nonce_digest).and_return(local_nonce_digest)
+          expect(subject).to receive(:get_oidc_value_from_session)
+            .with(:nonce_digest).and_return(local_nonce_digest)
 
-          expect(subject).to receive(:get_oidc_value_from_session).
-            with(:state_digest).and_return(local_state_digest)
+          expect(subject).to receive(:get_oidc_value_from_session)
+            .with(:state_digest).and_return(local_state_digest)
 
           subject.call(params)
         end
@@ -252,23 +252,23 @@ describe OmniAuth::GovukOneLogin::Callback do
       context "when object keys are strings" do
         let(:local_state_digest) { state_digest }
         let(:local_nonce_digest) { nonce_digest }
-        let(:local_session) {
+        let(:local_session) do
           {
             "oidc" => {
               "state_digest" => local_state_digest,
-              "nonce_digest" => local_nonce_digest,
+              "nonce_digest" => local_nonce_digest
             }
           }
-        }
+        end
 
         subject { described_class.new(client: client, session: local_session) }
 
         it "is successfully fetches session values" do
-          expect(subject).to receive(:get_oidc_value_from_session).
-            with(:nonce_digest).and_return(local_nonce_digest)
+          expect(subject).to receive(:get_oidc_value_from_session)
+            .with(:nonce_digest).and_return(local_nonce_digest)
 
-          expect(subject).to receive(:get_oidc_value_from_session).
-            with(:state_digest).and_return(local_state_digest)
+          expect(subject).to receive(:get_oidc_value_from_session)
+            .with(:state_digest).and_return(local_state_digest)
 
           subject.call(params)
         end

@@ -8,7 +8,7 @@ describe OmniAuth::GovukOneLogin::IdpConfiguration do
     authorization_endpoint: "https://oidc.account.gov.uk/authorize",
     token_endpoint: "https://oidc.account.gov.uk/token",
     userinfo_endpoint: "https://oidc.account.gov.uk/userinfo",
-    end_session_endpoint: "https://oidc.account.gov.uk/logout",
+    end_session_endpoint: "https://oidc.account.gov.uk/logout"
   }.each do |method, expected_result|
     describe "##{method}" do
       context "when the configuration request is successful" do

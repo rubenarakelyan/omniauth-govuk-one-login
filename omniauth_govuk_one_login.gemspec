@@ -1,4 +1,4 @@
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "omniauth/govuk_one_login/version"
 
@@ -22,12 +22,13 @@ Gem::Specification.new do |s|
   ]
   s.require_paths = ["lib"]
   s.metadata = {
-    "bug_tracker_uri"   => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/issues",
-    "changelog_uri"     => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/blob/main/CHANGELOG.md",
+    "bug_tracker_uri" => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/issues",
+    "changelog_uri" => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/blob/main/CHANGELOG.md",
     "documentation_uri" => "https://www.rubydoc.info/gems/omniauth_govuk_one_login",
-    "source_code_uri"   => "https://github.com/rubenarakelyan/omniauth-govuk-one-login",
-    "wiki_uri"          => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/wiki",
-    "funding_uri"       => "https://github.com/sponsors/rubenarakelyan"
+    "source_code_uri" => "https://github.com/rubenarakelyan/omniauth-govuk-one-login",
+    "wiki_uri" => "https://github.com/rubenarakelyan/omniauth-govuk-one-login/wiki",
+    "funding_uri" => "https://github.com/sponsors/rubenarakelyan",
+    "rubygems_mfa_required" => "true"
   }
 
   s.cert_chain = ["certs/rubena.pem"]
@@ -41,6 +42,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-byebug", "~> 3.11"
   s.add_development_dependency "rake", "~> 13.3"
   s.add_development_dependency "rspec", "~> 3.13"
+  s.add_development_dependency "rubocop", "~> 1.76"
   s.add_development_dependency "simplecov", "~> 0.22"
   s.add_development_dependency "webmock", "~> 3.25"
 end

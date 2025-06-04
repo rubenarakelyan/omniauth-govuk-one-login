@@ -28,9 +28,7 @@ module OmniAuth
           keys = JSON.parse(jwks_endpoint_response.body)["keys"]
           jwks = JWT::JWK::Set.new(keys)
           jwks.filter! { |key| key[:use] == "sig" && key[:alg] == "ES256" }
-          jwks.map do |jwk|
-            jwk.public_key
-          end
+          jwks.map(&:public_key)
         end
       end
 

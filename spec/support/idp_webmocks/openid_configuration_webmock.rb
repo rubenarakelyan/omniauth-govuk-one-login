@@ -15,7 +15,7 @@ module OpenidConfigurationWebmock
       jwks_uri: IdpFixtures.jwks_endpoint,
       token_endpoint: IdpFixtures.token_endpoint,
       userinfo_endpoint: IdpFixtures.userinfo_endpoint,
-      end_session_endpoint: IdpFixtures.end_session_endpoint,
+      end_session_endpoint: IdpFixtures.end_session_endpoint
     }.to_json
   end
 end

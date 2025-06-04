@@ -1,7 +1,7 @@
 module JwksWebmock
   def stub_jwks_request(body: default_jwks_response_body, status: 200)
-    stub_request(:get, IdpFixtures.jwks_endpoint).
-      to_return(body: body, status: status)
+    stub_request(:get, IdpFixtures.jwks_endpoint)
+      .to_return(body: body, status: status)
   end
 
   def default_jwks_response_body

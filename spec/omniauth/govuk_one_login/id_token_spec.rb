@@ -56,7 +56,7 @@ describe OmniAuth::GovukOneLogin::IdToken do
       it "returns true" do
         aggregate_failures do
           IdpFixtures.private_keys.each do |private_key|
-            jwt = JWT.encode({ nonce: jwt_nonce }, private_key, "ES256")
+            JWT.encode({ nonce: jwt_nonce }, private_key, "ES256")
             expect(subject.send(:verify_nonce, session_nonce_digest)).to eq(true)
           end
         end
