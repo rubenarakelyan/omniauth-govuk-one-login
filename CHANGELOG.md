@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.2
+
+* Tweaked logout utility to use `id_token`
+
 ## v1.1.1
 
 * Added metadata to gemspec
