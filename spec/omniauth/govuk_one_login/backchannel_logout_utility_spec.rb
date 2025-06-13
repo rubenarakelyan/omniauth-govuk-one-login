@@ -63,7 +63,7 @@ describe OmniAuth::GovukOneLogin::BackchannelLogoutUtility do
   end
 
   describe "#decoded_logout_token" do
-    before { subject.send(:set_logout_token, jwt) }
+    before { subject.send(:logout_token, jwt) }
 
     context "when all fields pass validation" do
       it "returns the decoded logout token" do
@@ -120,7 +120,7 @@ describe OmniAuth::GovukOneLogin::BackchannelLogoutUtility do
   end
 
   describe "#verify_sub" do
-    before { subject.send(:set_logout_token, jwt) }
+    before { subject.send(:logout_token, jwt) }
 
     context "when the sub exists" do
       it "returns true" do
@@ -140,7 +140,7 @@ describe OmniAuth::GovukOneLogin::BackchannelLogoutUtility do
   end
 
   describe "#verify_events_claim" do
-    before { subject.send(:set_logout_token, jwt) }
+    before { subject.send(:logout_token, jwt) }
 
     context "when the events claim matches what is expected" do
       it "returns true" do

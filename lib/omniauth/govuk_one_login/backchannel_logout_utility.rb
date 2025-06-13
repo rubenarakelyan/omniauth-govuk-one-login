@@ -31,12 +31,7 @@ module OmniAuth
         check_initialize_arguments!(idp_base_url, idp_configuration)
 
         @client_id = client_id
-
-        if idp_configuration
-          @idp_configuration = idp_configuration
-        else
-          @idp_configuration = OmniAuth::GovukOneLogin::IdpConfiguration.new(idp_base_url: idp_base_url)
-        end
+        @idp_configuration = idp_configuration || OmniAuth::GovukOneLogin::IdpConfiguration.new(idp_base_url: idp_base_url)
       end
 
       def check_initialize_arguments!(idp_base_url, idp_configuration)
@@ -48,7 +43,7 @@ module OmniAuth
       # @param logout_token [String]
       # @return [String]
       def get_sub!(logout_token:)
-        set_logout_token(logout_token)
+        logout_token(logout_token)
         verify_sub
         verify_events_claim
 
@@ -98,7 +93,7 @@ module OmniAuth
         if !decoded_logout_token["events"].nil? &&
            decoded_logout_token["events"].is_a?(Hash) &&
            decoded_logout_token["events"].size == 1 &&
-           decoded_logout_token["events"].has_key?("http://schemas.openid.net/event/backchannel-logout") &&
+           decoded_logout_token["events"].key?("http://schemas.openid.net/event/backchannel-logout") &&
            decoded_logout_token["events"]["http://schemas.openid.net/event/backchannel-logout"] == {}
           return true
         end
@@ -106,7 +101,7 @@ module OmniAuth
         raise LogoutTokenEventsClaimMismatchError
       end
 
-      def set_logout_token(logout_token)
+      def logout_token(logout_token)
         @logout_token = logout_token
       end
     end
