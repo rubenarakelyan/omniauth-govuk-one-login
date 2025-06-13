@@ -6,11 +6,11 @@ module OmniAuth
     #     skip_forgery_protection
     #
     #     def backchannel_logout
-    #       return head :bad_request unless params[:logout_token].present?
+    #       return head :bad_request if params[:logout_token].blank?
     #
-    #       uid = backchannel_logout_utility.get_sub(logout_token: params[:logout_token])
+    #       uid = self.class.backchannel_logout_utility.get_sub(logout_token: params[:logout_token])
     #
-    #       return head :bad_request unless uid.present?
+    #       return head :bad_request if uid.blank?
     #
     #       user = User.find_by!(uid: uid)
     #       sign_out(user)
