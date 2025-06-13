@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.0
+
+* Added support for backchannel logout token verification
+
 ## v1.1.2
 
 * Tweaked logout utility to use `id_token`
