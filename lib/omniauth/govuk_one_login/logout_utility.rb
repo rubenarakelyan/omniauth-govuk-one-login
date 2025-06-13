@@ -1,6 +1,6 @@
 module OmniAuth
   module GovukOneLogin
-    # Assists in RP-initiated logout: https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/managing-your-users-sessions/#respond-to-the-back-channel-logout-request
+    # Assists in RP-initiated logout: https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/managing-your-users-sessions/#log-your-user-out-of-gov-uk-one-login
     # @example RP-initiated logout in Rails controller using Devise
     #   class SessionsController < Devise::SessionsController
     #     def destroy

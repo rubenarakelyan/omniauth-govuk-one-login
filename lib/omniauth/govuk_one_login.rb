@@ -1,4 +1,5 @@
 require "omniauth/govuk_one_login/authorization"
+require "omniauth/govuk_one_login/backchannel_logout_utility"
 require "omniauth/govuk_one_login/callback"
 require "omniauth/govuk_one_login/client"
 require "omniauth/govuk_one_login/errors"

@@ -13,6 +13,7 @@ describe OmniAuth::GovukOneLogin::LogoutUtility do
   describe "#build_request" do
     context "initialized with idp_base_url" do
       before { stub_openid_configuration_request }
+
       it "generates state if not given" do
         request = subject.build_request(id_token_hint: id_token, post_logout_redirect_uri: post_logout_redirect_uri)
         state = request.state
@@ -55,6 +56,7 @@ describe OmniAuth::GovukOneLogin::LogoutUtility do
 
     context "initialized with idp_config" do
       before { stub_openid_configuration_request }
+
       it "generates redirect_uri" do
         idp_config = OmniAuth::GovukOneLogin::IdpConfiguration.new(idp_base_url: IdpFixtures.base_url)
         logout_utility = OmniAuth::GovukOneLogin::LogoutUtility.new(idp_configuration: idp_config)

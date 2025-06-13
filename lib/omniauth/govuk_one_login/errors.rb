@@ -47,5 +47,23 @@ module OmniAuth
 
     class UserinfoRequestError < Error
     end
+
+    class LogoutTokenExpMismatchError < Error
+    end
+
+    class LogoutTokenAudMismatchError < Error
+    end
+
+    class LogoutTokenIatMismatchError < Error
+    end
+
+    class LogoutTokenIssMismatchError < Error
+    end
+
+    class LogoutTokenSubMismatchError < Error
+    end
+
+    class LogoutTokenEventsClaimMismatchError < Error
+    end
   end
 end
