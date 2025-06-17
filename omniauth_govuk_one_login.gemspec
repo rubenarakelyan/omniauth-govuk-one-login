@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
   s.add_dependency "faraday", "~> 2.13"
-  s.add_dependency "jwt", "~> 2.10"
+  s.add_dependency "jwt", ">= 2.10", "< 4.0"
   s.add_dependency "omniauth", "~> 2.1"
 
   s.add_development_dependency "activesupport", "~> 8.0"
