@@ -54,7 +54,7 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
       client_id: ENV["GOVUK_ONE_LOGIN_CLIENT_ID"], # your client ID from the GOV.UK One Login admin tool
       idp_base_url: ENV["GOVUK_ONE_LOGIN_BASE_URL"],
       private_key: OpenSSL::PKey::RSA.new(ENV["GOVUK_ONE_LOGIN_PRIVATE_KEY"]), # the private key you generated above in PEM format
-      redirect_uri: ENV["GOVUK_ONE_LOGIN_REDIRECT_URI"],
+      redirect_uri: ENV["GOVUK_ONE_LOGIN_REDIRECT_URI"], # if this is a relative URI, the requesting domain will be used
       # these are optional - shown here with their default values if omitted
       scope: "openid,email", # comma-separated; must include at least `openid` and `email`
       ui_locales: "en", # comma-separated; can also include `cy` for Welsh UI

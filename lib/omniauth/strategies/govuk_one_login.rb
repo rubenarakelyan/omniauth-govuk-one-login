@@ -48,11 +48,18 @@ module OmniAuth
       end
 
       def client
+        redirect_uri = URI.parse(options.redirect_uri)
+
+        if redirect_uri.relative?
+          omniauth_origin = env["rack.session"]["omniauth.origin"] || env["omniauth.origin"]
+          redirect_uri = URI.parse(omniauth_origin).merge(redirect_uri)
+        end
+
         @client ||= OmniAuth::GovukOneLogin::Client.new(
           client_id: options.client_id,
           idp_base_url: options.idp_base_url,
           private_key: options.private_key,
-          redirect_uri: options.redirect_uri,
+          redirect_uri: redirect_uri,
           scope: options.scope,
           ui_locales: options.ui_locales,
           vtr: options.vtr,
